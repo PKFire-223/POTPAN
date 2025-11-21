@@ -1,45 +1,33 @@
 import styles from "../styles/screens/page2-3.styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
-import { useLocalSearchParams, useRouter } from "expo-router";
 import React from "react";
 import {
-  Dimensions,
   ImageBackground,
   Pressable,
   StatusBar,
-  StyleSheet,
   Text,
   View,
-  type ImageSourcePropType,
 } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigations/RootNavigator";
+
+import BgImage from "../../assets/images/2-3.png";
 import E1 from "../../assets/images/eli1.svg";
 import E2 from "../../assets/images/eli2.svg";
 import E3 from "../../assets/images/eli3.svg";
 
-const { width: W, height: H } = Dimensions.get("window");
-const IMG_H = Math.round(H * 0.7);
+type Props = NativeStackScreenProps<RootStackParamList, "Page2-3">;
 
-type Props = {
-  image?: ImageSourcePropType;
-};
-
-export default function Page2_3(props: Props) {
-  const router = useRouter();
-  const params = useLocalSearchParams();
-
+export default function Page2_3({ navigation }: Props) {
   const goBack = () => {
-    // chỗ này có thể dùng router.back() nếu cần
+    navigation.goBack();
   };
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
-      <ImageBackground
-        source={props.image as any}
-        style={styles.image}
-        resizeMode="cover"
-      >
+      <ImageBackground source={BgImage} style={styles.image} resizeMode="cover">
         <LinearGradient
           colors={["rgba(0,0,0,0.6)", "rgba(0,0,0,0.1)", "rgba(0,0,0,0.85)"]}
           style={styles.overlay}
