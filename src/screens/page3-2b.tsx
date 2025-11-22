@@ -2,7 +2,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useRef } from "react";
 import { Animated, StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
-import { RootStackParamList } from "../navigation/RootNavigator";
+import { RootStackParamList } from "../navigations/RootNavigator";
 
 import CheckIcon from "../../assets/images/check.svg";
 import LogoIcon from "../../assets/images/logo.svg";
