@@ -5,17 +5,13 @@ import {
   KeyboardAvoidingView,
   Linking,
   Platform,
-  SafeAreaView,
-  ScrollView,
+  SafeAreaView, ScrollView,
   StyleSheet,
-  Text,
-  TextInput,
+  Text, TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { RootStackParamList } from "../navigations/RootNavigator";
-
-import styles from "../styles/screens/RegisterScreen.styles";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Register">;
 
@@ -27,11 +23,13 @@ export default function RegisterScreen({ navigation }: Props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [confirmPwd, setConfirmPwd] = useState("");
-  const [showPwd, setShowPwd] = useState(false);
+  const [dob, setDob] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [showPass, setShowPass] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
+  
   const onSubmit = () => {
     const fallbackName = name?.trim() || "Jane Doe";
     navigation.navigate("RegisterSuccess", { name: fallbackName });
@@ -39,168 +37,162 @@ export default function RegisterScreen({ navigation }: Props) {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#f6f6f6" }}>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.select({ ios: "padding" })}
-      >
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.select({ ios: "padding" })}>
         <View style={styles.container}>
           <Text style={styles.title}>ĐĂNG KÝ</Text>
 
-          <ScrollView
-            style={{ flex: 1 }}
-            contentContainerStyle={{ paddingBottom: 16 }}
-            keyboardShouldPersistTaps="handled"
-          >
+          <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 16 }} keyboardShouldPersistTaps="handled">
             <View style={styles.form}>
               <Text style={styles.label}>Họ tên</Text>
-              <Input
-                style={styles.textHolder}
-                placeholder="Jane Doe"
-                value={name}
-                onChangeText={setName}
-              />
+              <Input style={styles.textHolder} placeholder="Jane Doe" value={name} onChangeText={setName} />
 
               <Text style={styles.label}>Email</Text>
-              <Input
-                style={styles.textHolder}
-                placeholder="exam..."
-                autoCapitalize="none"
-                value={email}
-                onChangeText={setEmail}
-              />
+              <Input style={styles.textHolder} placeholder="example@gmail.com" keyboardType="email-address" autoCapitalize="none" value={email} onChangeText={setEmail} />
 
-              <Text style={styles.label}>Số điện thoại</Text>
-              <Input
-                style={styles.textHolder}
-                placeholder="0900 000 000"
-                keyboardType="phone-pad"
-                value={phone}
-                onChangeText={setPhone}
-              />
+              <Text style={styles.label}>SĐT</Text>
+              <Input style={styles.textHolder} placeholder="+843 620 709" keyboardType="phone-pad" value={phone} onChangeText={setPhone} />
+
+              <Text style={styles.label}>Ngày sinh</Text>
+              <Input style={styles.textHolder} placeholder="dd/mm/yy" value={dob} onChangeText={setDob} />
 
               <Text style={styles.label}>Mật khẩu</Text>
-              <PasswordInput
-                style={styles.textHolder}
-                placeholder={PWD_PLACEHOLDER}
-                value={pwd}
-                onChangeText={setPwd}
-                visible={showPwd}
-                onToggleVisible={() => setShowPwd((v) => !v)}
-              />
+              <PasswordInput  placeholder={PWD_PLACEHOLDER} value={password} onChangeText={setPassword} visible={showPass} onToggleVisible={() => setShowPass(v => !v)} />
 
-              <Text style={styles.label}>Nhập lại mật khẩu</Text>
-              <PasswordInput
-                style={styles.textHolder}
-                placeholder={PWD_PLACEHOLDER}
-                value={confirmPwd}
-                onChangeText={setConfirmPwd}
-                visible={showConfirm}
-                onToggleVisible={() => setShowConfirm((v) => !v)}
-              />
+              <Text style={styles.label}>Xác nhận mật khẩu</Text>
+              <PasswordInput  placeholder={PWD_PLACEHOLDER} value={confirm} onChangeText={setConfirm} visible={showConfirm} onToggleVisible={() => setShowConfirm(v => !v)} />
             </View>
+          </ScrollView>
 
-            <View style={styles.footer}>
-              <Text style={styles.termsText}>
-                Bằng việc tiếp tục, bạn đồng ý với{" "}
-                <Text
-                  style={styles.link}
-                  onPress={() => Linking.openURL("https://example.com/terms")}
-                >
-                  Điều khoản dịch vụ
-                </Text>{" "}
-                và{" "}
-                <Text
-                  style={styles.link}
-                  onPress={() => Linking.openURL("https://example.com/privacy")}
-                >
-                  Chính sách bảo mật
-                </Text>
-                .
-              </Text>
-            </View>
-
-            <TouchableOpacity style={styles.submitBtn} onPress={onSubmit}>
-              <Text style={styles.submitText}>Đăng ký</Text>
+          <View style={styles.footer}>
+            <Text style={styles.termsText}>
+              Bằng cách bấm, bạn chấp nhận điều khoản sử dụng & chính sách bảo mật
+            </Text>
+            <TouchableOpacity activeOpacity={0.9} style={styles.primaryBtn} onPress={onSubmit}>
+              <Text style={styles.primaryText}>Đăng ký</Text>
             </TouchableOpacity>
 
             <Text style={styles.bottomText}>
-              Đã có tài khoản?{" "}
-              <Text
-                style={styles.link}
-                onPress={() => {
-                  // chỗ này sau này gắn navigate sang màn Login
-                }}
-              >
-                Đăng nhập
-              </Text>
+              Đã có tài khoản?
+              <Text style={styles.link} onPress={() => Linking.openURL("#")} suppressHighlighting> Đăng nhập</Text>
             </Text>
-          </ScrollView>
+          </View>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
 
-/** Input text thường */
-const Input = ({
-  style,
-  placeholder,
-  value,
-  onChangeText,
-  keyboardType,
-  autoCapitalize,
-}: {
-  style?: any;
-  placeholder?: string;
-  value: string;
-  onChangeText: (t: string) => void;
-  keyboardType?: "default" | "phone-pad" | "email-address";
-  autoCapitalize?: "none" | "sentences" | "words" | "characters";
-}) => (
-  <View style={styles.inputWrapper}>
-    <TextInput
-      style={[styles.input, style]}
-      placeholder={placeholder}
-      value={value}
-      onChangeText={onChangeText}
-      keyboardType={keyboardType}
-      autoCapitalize={autoCapitalize}
-      placeholderTextColor="#9CA3AF"
-    />
+const Input = (props: React.ComponentProps<typeof TextInput>) => (
+  <View style={styles.inputWrap}>
+    <TextInput 
+    allowFontScaling={false}
+    {...props} placeholderTextColor="#e3e3e3ff" style={[styles.input, props.style]} />
   </View>
 );
 
-/** Input mật khẩu có icon con mắt */
 const PasswordInput = ({
-  style,
-  placeholder,
-  value,
-  onChangeText,
-  visible,
-  onToggleVisible,
-}: {
-  style?: any;
-  placeholder?: string;
-  value: string;
-  onChangeText: (t: string) => void;
-  visible: boolean;
-  onToggleVisible: () => void;
-}) => (
-  <View style={styles.pwdWrapper}>
+  value, onChangeText, visible, onToggleVisible, placeholder,
+}: { value: string; onChangeText: (t: string) => void; visible: boolean; onToggleVisible: () => void; placeholder?: string; }) => (
+  <View style={styles.inputWrap}>
     <TextInput
-      style={[styles.input, style]}
-      placeholder={placeholder}
       value={value}
+       allowFontScaling={false}
       onChangeText={onChangeText}
-      placeholderTextColor="#9CA3AF"
       secureTextEntry={!visible}
+      placeholder={placeholder}
+      placeholderTextColor="#e3e3e3ff"
+      style={[styles.input, { paddingRight: 44,paddingVertical: 0,textAlignVertical: "center", fontSize:11 }]}
     />
     <TouchableOpacity style={styles.eyeBtn} onPress={onToggleVisible}>
-      <Ionicons
-        name={visible ? "eye" : "eye-off"}
-        size={20}
-        color="#ffffffff"
-      />
+      <Ionicons name={visible ? "eye" : "eye-off"} size={20} color="#ffffffff" />
     </TouchableOpacity>
   </View>
 );
+
+const styles = StyleSheet.create({
+  container: { flex: 1, paddingTop: 8, paddingHorizontal: 16 },
+  title: { 
+   
+    fontSize: 44, 
+    fontWeight: "700", 
+    textAlign: 'center', 
+    letterSpacing: 1,
+     marginBottom: 10, 
+     color: "#4B4B4B",
+     justifyContent: 'center',
+     fontStyle: 'normal',
+     marginTop: 8,
+    
+   },
+  form: { flex: 1,
+   },
+  label: { 
+  
+    fontSize: 24,
+    fontStyle: 'normal',
+    color: '#4B4B4B', 
+    fontWeight: '700',
+    marginBottom: 5, 
+    marginTop: 10 ,
+    },
+  inputWrap: { position: "relative" },
+  input: { 
+    height: 46, 
+    borderRadius: 40,
+     paddingHorizontal: 20, 
+     backgroundColor: ORANGE, 
+     color: "#ffffffff", 
+     fontWeight: "600",
+     fontSize: 18,
+     letterSpacing:1,
+     textAlignVertical: "center"
+     },
+    textHolder:{
+    
+    fontSize: 18,
+    fontWeight: '500',
+    },
+  eyeBtn: { 
+    position: "absolute", 
+    right: 12, 
+    top: 11, 
+    height: 20, 
+    width: 20, 
+    alignItems: "center",
+     justifyContent: "center"
+     },
+  footer: { paddingTop: 8, paddingBottom: 28 },
+  termsText: { 
+
+    fontSize: 18, 
+    color: "#4B4B4B", 
+    lineHeight: 22, 
+    fontWeight:'500',
+    textAlign: 'center',
+  },
+  primaryBtn: { 
+    backgroundColor: ORANGE, 
+    height: 48, 
+    width:185,
+    borderRadius: 40,
+     alignItems: "center", 
+     justifyContent: "center", 
+     marginTop: 10 ,
+     alignSelf: 'center',
+    },
+  primaryText: { 
+    color: "#fff", 
+    fontWeight: "800",
+    fontSize: 24,
+   
+
+     },
+  bottomText: { 
+    marginTop: 10, 
+    alignSelf: "center",
+     color: "#4B4B4B",
+    
+    fontSize: 18,
+     },
+  link: { color: '#1C37CF', fontWeight: "800" },
+});
