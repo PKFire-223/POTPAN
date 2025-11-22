@@ -1,13 +1,13 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import RegisterScreen from "../screens/page3-2a";
+import Page3_2a from "../screens/page3-2a";
 import RegisterSuccessScreen from "../screens/page3-2b";
 import Page1_1 from "../screens/page1-1";
 import Page1_2 from "../screens/page1-2";
 import Page2_3 from "../screens/page2-3";
 
 export type RootStackParamList = {
-  Register: undefined;
+  "Page3-2a": undefined;
   RegisterSuccess: { name?: string } | undefined;
   "Page1-1": undefined;
   "Page1-2": undefined;
@@ -20,9 +20,9 @@ export default function RootNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="Register"
+      initialRouteName="Page3-2a"
     >
-      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="Page3-2a" component={Page3_2a} />
       <Stack.Screen
         name="RegisterSuccess"
         component={RegisterSuccessScreen}

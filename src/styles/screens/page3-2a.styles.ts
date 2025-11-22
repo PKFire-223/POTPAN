@@ -1,7 +1,11 @@
+// src/styles/screens/page3-2a.styles.ts
 import { StyleSheet } from "react-native";
+
+const ORANGE = "#FF782C";
 
 const styles = StyleSheet.create({
   container: { flex: 1, paddingTop: 8, paddingHorizontal: 16 },
+
   title: {
     fontSize: 44,
     fontWeight: "700",
@@ -13,35 +17,39 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     marginTop: 8,
   },
-  form: { flex: 1 },
+
+  form: {
+    flex: 1,
+  },
+
   label: {
     fontSize: 24,
-    marginBottom: 10,
+    fontStyle: "normal",
     color: "#4B4B4B",
-    fontWeight: "800",
+    fontWeight: "700",
+    marginBottom: 5,
+    marginTop: 10,
   },
-  inputWrapper: {
-    marginBottom: 16,
-    borderRadius: 12,
-    backgroundColor: "#fff",
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-  },
+
+  inputWrap: { position: "relative" },
+
   input: {
+    height: 46,
+    borderRadius: 40,
+    paddingHorizontal: 20,
+    backgroundColor: ORANGE,
+    color: "#ffffffff",
+    fontWeight: "600",
     fontSize: 18,
-    fontWeight: "500",
+    letterSpacing: 1,
+    textAlignVertical: "center",
   },
-  pwdWrapper: {
-    marginBottom: 16,
-    borderRadius: 12,
-    backgroundColor: "#fff",
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-  },
+
   textHolder: {
     fontSize: 18,
     fontWeight: "500",
   },
+
   eyeBtn: {
     position: "absolute",
     right: 12,
@@ -51,30 +59,41 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
   footer: { paddingTop: 8, paddingBottom: 28 },
+
   termsText: {
-    fontSize: 14,
-    textAlign: "center",
+    fontSize: 18,
     color: "#4B4B4B",
+    lineHeight: 22,
+    fontWeight: "500",
+    textAlign: "center",
   },
-  submitBtn: {
-    backgroundColor: "#FF782C",
-    borderRadius: 16,
-    paddingVertical: 14,
+
+  primaryBtn: {
+    backgroundColor: ORANGE,
+    height: 48,
+    width: 185,
+    borderRadius: 40,
     alignItems: "center",
-    marginTop: 8,
+    justifyContent: "center",
+    marginTop: 10,
+    alignSelf: "center",
   },
-  submitText: {
-    fontSize: 20,
+
+  primaryText: {
     color: "#fff",
     fontWeight: "800",
+    fontSize: 24,
   },
+
   bottomText: {
     marginTop: 10,
     alignSelf: "center",
     color: "#4B4B4B",
     fontSize: 18,
   },
+
   link: { color: "#1C37CF", fontWeight: "800" },
 });
 
