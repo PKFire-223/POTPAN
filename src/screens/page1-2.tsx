@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-// import SVG
+import { Dimensions, Text, TouchableOpacity, View } from "react-native";
+
+// SVG giữ nguyên theo yêu cầu
 import BgImage from "../../assets/images/banhmi.svg";
-import Logo from "../../assets/images/L3.svg";
+import Logo from "../../assets/images/Logo2-cropped.svg";
 import AgImage from "../../assets/images/thit_kho.svg";
 
 const { width: W, height: H } = Dimensions.get("window");
@@ -20,44 +15,40 @@ import styles from "../styles/screens/page1-2.styles";
 export default function Home() {
   return (
     <View style={styles.container}>
-      {/* Phần trên: background hình ảnh */}
-      <View style={styles.topContainer}>
-        <BgImage width={W} height={TOP_H} />
+      {/* Ảnh nền trên */}
+      <View style={styles.topImage}>
+        <BgImage width={W} height={TOP_H} preserveAspectRatio="xMidYMid slice" />
+      </View>
+
+      {/* Ảnh nền dưới */}
+      <View style={styles.bottomImage}>
+        <AgImage
+          width={W}
+          height={BOT_H - 10}
+          preserveAspectRatio="xMidYMid slice"
+        />
+      </View>
+
+      {/* Logo + text giữa */}
+      <View style={styles.overlayCenter}>
         <View style={styles.logoContainer}>
-          <Logo width={120} height={120} />
+          <Logo width={224} height={210} />
+          <View style={styles.text}>
+          <Text style={styles.title}>PotPan</Text>
+          <Text style={styles.subtitle}>Món gì khó, có PotPan</Text>
+          </View>
         </View>
       </View>
 
-      {/* Phần dưới: nền trắng bo tròn với nội dung */}
-      <View style={styles.bottomContainer}>
-        {/* Tiêu đề và mô tả */}
-        <View style={styles.textSection}>
-          <Text style={styles.title}>Khám phá công thức</Text>
-          <Text style={styles.subtitle}>
-            Hàng trăm món ăn gia đình Việt với hướng dẫn chi tiết, dễ làm.
-          </Text>
-        </View>
+      {/* Button */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.loginButton}>
+          <Text style={styles.loginText}>Đăng nhập</Text>
+        </TouchableOpacity>
 
-        {/* Thẻ công thức gợi ý */}
-        <View style={styles.featureContainer}>
-          <AgImage width={80} height={80} />
-          <View style={styles.featureTextContainer}>
-            <Text style={styles.featureTitle}>Gợi ý thực đơn</Text>
-            <Text style={styles.featureDescription}>
-              Món ngon mỗi ngày theo khẩu vị của bạn.
-            </Text>
-          </View>
-        </View>
-
-        {/* Nút bên dưới */}
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.loginButton}>
-            <Text style={styles.loginText}>Đăng nhập</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.startButton}>
-            <Text style={styles.startText}>Bắt đầu</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.startButton}>
+          <Text style={styles.startText}>Bắt đầu</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

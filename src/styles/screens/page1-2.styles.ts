@@ -1,97 +1,77 @@
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fff",
   },
-  topContainer: {
+  topImage: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-end",
+    overflow: "hidden",
   },
-  logoContainer: {
+  bottomImage: {
+    flex: 1,
+    overflow: "hidden",
+  },
+  overlayCenter: {
     position: "absolute",
-    top: 60,
-    left: 24,
+    width: 300,
+    height: 300,
+    alignSelf: 'center',
+    top: "33.5%",
+    zIndex: 10,          
+    elevation: 10,       
+},
+
+  logoContainer: {
+    alignItems: "center",
+    backgroundColor: "#ffff",
+    borderRadius: 400,
   },
-  bottomContainer: {
-    flex: 1,
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
-    backgroundColor: "#f9fafb",
-    paddingHorizontal: 24,
-    paddingTop: 24,
-  },
-  textSection: {
-    marginBottom: 20,
+  
+  text: {
+    bottom: 35
   },
   title: {
-    fontSize: 22,
-    fontWeight: "700",
-    color: "#111827",
-    marginBottom: 8,
+    fontSize: 60,
+    fontWeight: "bold",
+    color: "#FF6967",
+    letterSpacing: 1,
   },
   subtitle: {
-    fontSize: 14,
-    color: "#4b5563",
-  },
-  featureContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 12,
-    borderRadius: 16,
-    backgroundColor: "#ffffff",
-    shadowColor: "#000000",
-    shadowOpacity: 0.06,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 4,
-    marginBottom: 24,
-  },
-  featureTextContainer: {
-    marginLeft: 12,
-    flex: 1,
-  },
-  featureTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#111827",
-    marginBottom: 4,
-  },
-  featureDescription: {
-    fontSize: 13,
-    color: "#6b7280",
+    fontSize: 18,
+    color: "#333",
+    fontWeight: "bold",
+    letterSpacing: -1,
+    alignSelf:'center'
   },
   buttonContainer: {
-    flexDirection: "row",
-    columnGap: 12,
+    position: "absolute",
+    bottom: 60,
+    width: "100%",
+    paddingHorizontal: 20,
   },
   loginButton: {
-    flex: 1,
-    paddingVertical: 12,
-    borderRadius: 999,
-    borderWidth: 1,
-    borderColor: "#e5e7eb",
+    backgroundColor: "#fff",
+    paddingVertical: 14,
+    borderRadius: 8,
+    marginBottom: 12,
     alignItems: "center",
   },
   loginText: {
-    fontSize: 15,
-    fontWeight: "500",
-    color: "#111827",
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#000",
   },
   startButton: {
-    flex: 1,
-    paddingVertical: 12,
-    borderRadius: 999,
-    backgroundColor: "#f97316",
+    backgroundColor: "#FF6967",
+    paddingVertical: 14,
+    borderRadius: 8,
     alignItems: "center",
   },
   startText: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: "600",
-    color: "#ffffff",
+    color: "#fff",
   },
 });
-
-export default styles;

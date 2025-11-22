@@ -20,7 +20,7 @@ export default function RootNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="Register"
+      initialRouteName="Page1-2"
     >
       <Stack.Screen name="Register" component={RegisterScreen} />
       <Stack.Screen
