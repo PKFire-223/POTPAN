@@ -1,111 +1,164 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get("window");
+
+export default StyleSheet.create({
+  container: { flex: 1, backgroundColor: "rgba(185, 169, 169, 1)" },
+
+  background: { flex: 1 },
+
+  bgImage: {
+    top: 80,
+  },
+
+  topFade: {
+    position: "absolute",
+    width: SCREEN_W + 50,
+    height: 330,
+  },
+
+  bottomFade: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 220,
+  },
+
+  title: {
+    top: 60,
+    left: 16,
+    right: 16,
+    fontSize: 25,
+    paddingHorizontal: 16,
+    fontWeight: "700",
+    color: "#4B4B4B",
+    lineHeight: 30,
+    letterSpacing: 0.04,
+    marginBottom: 4,
+  },
+
+  subtitle: {
+    fontStyle: "italic",
+    fontSize: 15,
+    color: "#4B4B4B",
+    fontWeight: "400",
+    letterSpacing: 0.04,
+    lineHeight: 18,
+    top: 60,
+    left: 16,
+    right: 16,
+    paddingHorizontal: 16,
+  },
+
+  dots: {
+    position: "absolute",
+    bottom: 52,
+    left: 100,
+    right: 100,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    gap: 10,
+  },
+
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 8,
+    backgroundColor: "#ffffff",
+  },
+
+  dotActive: {
+    opacity: 1,
+    width: 9,
+    height: 9,
     backgroundColor: "#000000",
   },
-  image: {
-    flex: 1,
-  },
-  overlay: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 32,
-    paddingBottom: 24,
-    justifyContent: "space-between",
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  backButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.4)",
+
+  muiten: {
+    position: "absolute",
+    bottom: 36,
+    width: 52,
+    height: 52,
+    borderRadius: 52,
+    backgroundColor: "#FF6967",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "rgba(15,23,42,0.4)",
+    shadowColor: "#FF6967",
+    shadowOpacity: 0.35,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
   },
-  badgeRow: {
-    flexDirection: "row",
-    marginTop: 16,
-    columnGap: 8,
-  },
-  badge: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 999,
-    backgroundColor: "rgba(15,23,42,0.7)",
-  },
-  badgeText: {
-    marginLeft: 6,
-    color: "#f9fafb",
-    fontSize: 12,
-  },
-  titleBlock: {
-    marginTop: 24,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: "800",
-    color: "#ffffff",
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 14,
-    color: "#e5e7eb",
-  },
-  chefRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 24,
-  },
-  chefInfo: {
-    marginLeft: 12,
-  },
-  chefName: {
-    fontSize: 16,
-    fontWeight: "600",
-    color: "#ffffff",
-  },
-  chefMeta: {
-    fontSize: 13,
-    color: "#e5e7eb",
-    marginTop: 2,
-  },
-  bottomBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 32,
-  },
-  iconChip: {
-    width: 44,
-    height: 44,
-    borderRadius: 999,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "rgba(15,23,42,0.8)",
-    marginRight: 12,
-  },
-  primaryButton: {
+
+  E1: {
     flex: 1,
-    height: 48,
-    borderRadius: 999,
-    backgroundColor: "#f97316",
-    alignItems: "center",
-    justifyContent: "center",
+    overflow: "hidden",
+    position: "absolute",
+    width: 318.4,
+    height: 153.17,
+    left: 12.4,
+    top: 189.06,
+    transform: [{ rotate: "2deg" }],
   },
-  primaryText: {
-    color: "#ffffff",
-    fontSize: 15,
-    fontWeight: "600",
+
+  E2: {
+    flex: 1,
+    overflow: "hidden",
+    position: "absolute",
+    width: 295.19,
+    height: 153.17,
+    left: 100,
+    top: 389,
+  },
+
+  E3: {
+    flex: 1,
+    overflow: "hidden",
+    position: "absolute",
+    width: 283.52,
+    height: 153.17,
+    left: 8.94,
+    top: 581,
+  },
+
+  T1: {
+    position: "absolute",
+    width: 298,
+    height: 68,
+    left: 26,
+    top: 251,
+    color: "#fff",
+    fontSize: 29,
+    fontStyle: "italic",
+    fontWeight: "900",
+    lineHeight: 44,
+  },
+
+  T2: {
+    position: "absolute",
+    width: 200,
+    height: 68,
+    left: 141,
+    top: 445,
+    color: "#fff",
+    fontSize: 30,
+    fontStyle: "italic",
+    fontWeight: "900",
+    lineHeight: 44,
+  },
+
+  T3: {
+    position: "absolute",
+    width: 186,
+    height: 54,
+    left: 63,
+    top: 639,
+    color: "#fff",
+    fontSize: 30,
+    fontStyle: "italic",
+    fontWeight: "900",
+    lineHeight: 44,
   },
 });
-
-export default styles;

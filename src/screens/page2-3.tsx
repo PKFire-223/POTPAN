@@ -1,83 +1,100 @@
-import styles from "../styles/screens/page2-3.styles";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
+  Dimensions,
   ImageBackground,
   Pressable,
   StatusBar,
   Text,
   View,
+  type ImageSourcePropType,
 } from "react-native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../navigations/RootNavigator";
 
-import BgImage from "../../assets/images/2-3.png";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
 import E1 from "../../assets/images/eli1.svg";
 import E2 from "../../assets/images/eli2.svg";
 import E3 from "../../assets/images/eli3.svg";
 
-type Props = NativeStackScreenProps<RootStackParamList, "Page2-3">;
+import styles from "../styles/screens/page2-3.styles";
 
-export default function Page2_3({ navigation }: Props) {
-  const goBack = () => {
-    navigation.goBack();
-  };
+const { width: SCREEN_W, height: SCREEN_H } = Dimensions.get("window");
+
+export default function Screen() {
+  const navigation = useNavigation();
+  const route = useRoute();
+
+  const ima = (route.params as any)?.ima as string | undefined;
+
+  const urlFromParam =
+    typeof ima === "string" && ima.length > 0 ? decodeURIComponent(ima) : undefined;
+
+  const bgSource: ImageSourcePropType =
+    urlFromParam ? { uri: urlFromParam } : require("../../assets/images/2-3.png");
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <ImageBackground source={BgImage} style={styles.image} resizeMode="cover">
+      <StatusBar barStyle="dark-content" />
+
+      <ImageBackground
+        source={bgSource}
+        resizeMode="cover"
+        style={styles.background}
+        imageStyle={styles.bgImage}
+      >
+        {/* Fade ở trên */}
         <LinearGradient
-          colors={["rgba(0,0,0,0.6)", "rgba(0,0,0,0.1)", "rgba(0,0,0,0.85)"]}
-          style={styles.overlay}
+          colors={["rgba(255,255,255,1)", "rgba(255,255,255,0)"]}
+          locations={[0.25, 0.95]}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.topFade}
+        />
+
+        <Text style={styles.title}>Các Tính Năng Chính</Text>
+        <Text style={styles.subtitle}>Cung cấp cho người dùng trải nghiệm tuyệt vời</Text>
+
+        <View>
+          <Text style={styles.T1}>Tìm kiếm công thức</Text>
+          <E1 style={styles.E1} />
+
+          <Text style={styles.T2}>Gợi ý món ăn</Text>
+          <E2 style={styles.E2} />
+
+          <Text style={styles.T3}>Mạng xã hội</Text>
+          <E3 style={styles.E3} />
+        </View>
+
+        {/* Fade dưới */}
+        <LinearGradient
+          colors={["rgba(255,255,255,0)", "rgba(255,255,255,1)"]}
+          locations={[0, 1]}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={styles.bottomFade}
+        />
+
+        {/* Dots */}
+        <View style={styles.dots}>
+          <View style={styles.dot} />
+          <View style={styles.dot} />
+          <View style={[styles.dot, styles.dotActive]} />
+          <View style={styles.dot} />
+        </View>
+
+        {/* Nút trái */}
+        <Pressable
+          style={[styles.muiten, { left: 24 }]}
+          onPress={() => navigation.goBack()}
         >
-          <View style={styles.header}>
-            <Pressable style={styles.backButton} onPress={goBack}>
-              <Ionicons name="arrow-back" size={28} color="#fff" />
-            </Pressable>
-            <Pressable style={[styles.backButton, { opacity: 0 }]}>
-              <Ionicons name="arrow-forward" size={28} color="#fff" />
-            </Pressable>
-          </View>
+          <Ionicons name="arrow-back" size={28} color="#fff" />
+        </Pressable>
 
-          <View style={styles.badgeRow}>
-            <View style={styles.badge}>
-              <Ionicons name="time-outline" size={16} color="#f97316" />
-              <Text style={styles.badgeText}>45 phút</Text>
-            </View>
-            <View style={styles.badge}>
-              <Ionicons name="flame-outline" size={16} color="#f97316" />
-              <Text style={styles.badgeText}>Đậm đà cơm nhà</Text>
-            </View>
-          </View>
-
-          <View style={styles.titleBlock}>
-            <Text style={styles.title}>Cá kho tộ{"\n"}chuẩn vị miền Tây</Text>
-            <Text style={styles.subtitle}>
-              Thịt cá săn chắc, kho nước màu keo lại, chan với cơm trắng là hết
-              nồi.
-            </Text>
-          </View>
-
-          <View style={styles.chefRow}>
-            <E1 width={72} height={72} />
-            <View style={styles.chefInfo}>
-              <Text style={styles.chefName}>Bếp Himeko</Text>
-              <Text style={styles.chefMeta}>Hơn 120 công thức gia đình</Text>
-            </View>
-          </View>
-
-          <View style={styles.bottomBar}>
-            <Pressable style={styles.iconChip}>
-              <Ionicons name="bookmark-outline" size={20} color="#f97316" />
-            </Pressable>
-
-            <Pressable style={styles.primaryButton}>
-              <Text style={styles.primaryText}>Xem công thức</Text>
-            </Pressable>
-          </View>
-        </LinearGradient>
+        {/* Nút phải */}
+        <Pressable style={[styles.muiten, { right: 24 }]}>
+          <Ionicons name="arrow-forward" size={28} color="#fff" />
+        </Pressable>
       </ImageBackground>
     </View>
   );
