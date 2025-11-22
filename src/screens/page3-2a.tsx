@@ -15,7 +15,7 @@ import { RootStackParamList } from "../navigations/RootNavigator";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Register">;
 
-const ORANGE = "#FF782C";
+const COLOR = "#FF782C";
 const PEACH = "#FFE3D1";
 const PWD_PLACEHOLDER = "●".repeat(10);
 
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     height: 46, 
     borderRadius: 40,
      paddingHorizontal: 20, 
-     backgroundColor: ORANGE, 
+     backgroundColor: COLOR, 
      color: "#ffffffff", 
      fontWeight: "600",
      fontSize: 18,
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   primaryBtn: { 
-    backgroundColor: ORANGE, 
+    backgroundColor: COLOR, 
     height: 48, 
     width:185,
     borderRadius: 40,
